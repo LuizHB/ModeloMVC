@@ -1,0 +1,57 @@
+@model IEnumerable<MVC.Models.Contato>
+<!-- cria uma lista pelo model para contatos -->
+
+@{//nome da aba
+    ViewData["Title"] = "Listagem de Contatos";
+}
+<!-- título na página -->
+<h2>Contatos</h2>
+
+<p><!-- hyperlink para criar novo contato -->
+    <a asp-action="Criar">Novo Contato</a>
+</p>
+
+<!-- tabela -->
+<table class="table">
+    <thead><!-- thead cria o cabeçalho da tabela -->
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+        </tr>
+    </thead>
+    <tbody><!-- cria o corpo da tabela / foreach cria uma linha para
+    cada elemento adicionado na tabela-->
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Ativo)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="item.Id">Editar</a>
+                    <a asp-action="Detalhes" asp-route-id="item.Id">Detalhes</a>
+                    <a asp-action="Deletar" asp-route-id="item.Id">Deletar</a>
+                </td>
+            </tr>
+        }<!-- 3 hyperlinks para edição -->
+    </tbody>
+</table>

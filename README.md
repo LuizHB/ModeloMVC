@@ -35,3 +35,6 @@ As páginas do modelo podem ser modificadas em [Views](/Views) e o layout princi
 
 ### Aplicação
 É necessária a conexão do banco de dados por meio de uma ConnectionStrings em [appsettings.json](appsettings.json). Com isso é possível observar a API pelo comando ``` dotnet watch run```
+
+### Exemplo - Página de contatos
+![sample_contatos](Sample_Contatos.png)

@@ -1,57 +1,73 @@
 @model IEnumerable<MVC.Models.Contato>
 <!-- cria uma lista pelo model para contatos -->
 
-@{//nome da aba
+@{
+    //nome da aba
     ViewData["Title"] = "Listagem de Contatos";
 }
 <!-- título na página -->
-<h2>Contatos</h2>
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <h2 class="display-4">Contatos</h2>
+        <p class="lead">Resultado da implementação da <i>Entity</i> <strong>Contatos</strong>.</p>
+    </div>
+</div>
 
-<p><!-- hyperlink para criar novo contato -->
-    <a asp-action="Criar">Novo Contato</a>
+<p align="center">
+    <!-- hyperlink para criar novo contato -->
+    <a class="text-dark" style="text-shadow: 2px 2px 5px red; text-decoration: none;" asp-action="Criar">Novo Contato</a>
 </p>
 
 <!-- tabela -->
-<table class="table">
-    <thead><!-- thead cria o cabeçalho da tabela -->
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
-        </tr>
-    </thead>
-    <tbody><!-- tbody cria o corpo da tabela / foreach cria uma linha para
-    cada elemento adicionado na tabela-->
-        @foreach (var item in Model) 
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Ativo)
-                </td>
-                <td> <!-- @item retorna o id de forma dinamica -->
-                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
-                    <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a>
-                    <a asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
-                </td>
+<div class="container">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <!-- thead cria o cabeçalho da tabela -->
+            <tr align="center">
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Ativo)
+                </th>
+                <th scope="col">
+                    Opções
+                </th>
             </tr>
-        }<!-- 3 hyperlinks para edição -->
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <!-- tbody cria o corpo da tabela / foreach cria uma linha para
+    cada elemento adicionado na tabela-->
+            @foreach (var item in Model)
+            {
+                <tr align="center">
+                    <td>
+                        @Html.DisplayFor(model => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Ativo)
+                    </td>
+                    <td>
+                        <!-- @item retorna o id de forma dinamica -->
+                        <a class="text-dark" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a>
+                        <a class="text-danger" asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
+                    </td>
+                </tr>
+            }
+            <!-- 3 hyperlinks para edição -->
+        </tbody>
+    </table>
+</div>
